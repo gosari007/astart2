@@ -3206,15 +3206,12 @@ function updateFireworks() {
             
             // 새로운 답변 설정 시 복제본 생성 플래그 리셋
             cloneCreatedForCurrentAnswer = false;
-        }        centerAlpha = 1.0;
-        fireworks = null; fireworksState = null; sentenceActive = false;
+        }        centerAlpha = 1.0;        fireworks = null; fireworksState = null; sentenceActive = false;
         if (activeWordTranslation) activeWordTranslation.show = false;
         activeWordTranslation = null; if (wordTranslationTimeoutId) clearTimeout(wordTranslationTimeoutId);
         
-        // 답변 문장으로 넘어갈 때 이미지 숨기기
-        if (roleOfNewSentence === 'answer' && typeof hideSentenceImage === 'function') {
-            hideSentenceImage();
-        }// 폭발 후 자동 오디오 재생 (복제본 생성 없음)
+        // 답변 문장으로 넘어갈 때는 이미지를 숨기지 않음 (다음 폭발 때까지 유지)
+        // 이미지는 다음 새로운 질문 문장이 시작될 때 사라짐// 폭발 후 자동 오디오 재생 (복제본 생성 없음)
         console.log("DEBUG: Checking auto audio playback - playAudioForThisSentence:", playAudioForThisSentence);
         if (playAudioForThisSentence) {
             let audioIndexToPlay = null;
